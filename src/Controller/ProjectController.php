@@ -55,10 +55,15 @@ class ProjectController extends AbstractController
     #[Route('/{id}', name: 'project_show', methods: ['GET'])]
     public function show(Project $project): Response
     {   
-        return $this->render('project/show.html.twig', [
+        if($project->getUser()==$this->getUser()){ 
+            
+            return $this->render('project/show.html.twig', [
             'project' => $project,
-
         ]);
+        }
+        else {
+            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+        }
     }
 
     #[Route('/{id}/edit', name: 'project_edit', methods: ['GET', 'POST'])]
