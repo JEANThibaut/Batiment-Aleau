@@ -18,7 +18,6 @@ class ProjectType extends AbstractType
             ->add('date')
             ->add('client')
             ->add('description')
-            // ->add('user')
         ;
     }
 

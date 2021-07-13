@@ -38,6 +38,13 @@
         </tbody>
     </table>
 
+    {% for task in project.tasks %}
+        <p>{{ task.title }}</p>
+        <p>{{ task.description }}</p>
+        <P>{{ task.state}}
+
+    {% endfor %}
+
     <a href="{{ path('project_index') }}">back to list</a>
 
     <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>

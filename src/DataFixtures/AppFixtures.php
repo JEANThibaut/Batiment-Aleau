@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
 
         for($j=1; $j < 3; $j++){
             $project = new Project();
-            $project->setTitle("Titre" . $j);
+            $project->setTitle("Titre" . $j. "User" .$i);
             $project->setDate(new \DateTime());
             $project->setCategory("Category" .$j);
             $project->setDeadline(new \DateTime());
@@ -49,8 +49,8 @@ class AppFixtures extends Fixture
                 $task->setTitle("titre" .$k);
                 $task->setDate(new \DateTime());
                 $task->setDeadline(new \DateTime());
-                $task->setDescription("Nouvelle tâche" .$k);
-                $task->setState("false");
+                $task->setDescription("Nouvelle tâche" .$k. "Projet" .$j);
+                $task->setState("true");
                 $task->setProject($project);
 
                

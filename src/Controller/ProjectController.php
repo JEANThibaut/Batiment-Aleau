@@ -9,17 +9,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+// use Symfony\Component\Security\Core\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+
+/**
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
+ */
 
 #[Route('/project')]
 class ProjectController extends AbstractController
 {
-    private $security;
+    // private $security;
  
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
+    // public function __construct(Security $security)
+    // {
+    //     $this->security = $security;
+    // }
 
     #[Route('/', name: 'project_index', methods: ['GET'])]
     public function index(ProjectRepository $projectRepository): Response
@@ -55,9 +61,10 @@ class ProjectController extends AbstractController
 
     #[Route('/{id}', name: 'project_show', methods: ['GET'])]
     public function show(Project $project): Response
-    {
+    {   
         return $this->render('project/show.html.twig', [
             'project' => $project,
+
         ]);
     }
 
