@@ -42,7 +42,7 @@
         <p>{{ task.title }}</p>
         <p>{{ task.description }}</p>
         <P>{{ task.state}}
-
+        <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
     {% endfor %}
 
     <a href="{{ path('project_index') }}">back to list</a>

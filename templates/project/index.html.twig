@@ -5,30 +5,29 @@
 {% block body %}
 
     <h1>Mes projets</h1>
+        <button class="btn btn-sm btn-primary w-50 my-3 m-auto" href="{{ path('project_new') }}">Créer un nouveau projet</button>
 
-
-    
- 
-        <tbody>
         {% for project in projects %}
 
-        <button class="accordion my-1">{{ project.title }} {{ project.category }}</button>
-        <div class="panel">
-            <p>{{ project.description }}</p>
+        <button class="accordion my-1 m-auto w-75">{{ project.title }} / {{ project.category }}</button>
+        <div class="panel card m-auto w-75 text-center">
             <p>{{ project.client }}</p>
             <p>{{ project.description }}</p>
             <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d H:i:s') : '' }}</p>
-            <a href="{{ path('project_show', {'id': project.id}) }}">Détails</a>
-            <a href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
+            <a class="btn btn-primary my-1" href="{{ path('project_show', {'id': project.id}) }}">Détails</a>
+            <a class="btn btn-primary my-1" href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
+            <button class="accordion my-1">Voir les tâches</button>
+            <div class="panel card my-1">
+                {% for task in project.tasks %}
+                    <p>{{ task.title }} {{ task.description }}</p>
+                    <button>{{ task.state}} </button>
+                {% endfor %}
+            </div>
         </div>
-
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
  
-
-    <button class="btn btn-primary my-3 w-25" href="{{ path('project_new') }}">Créer un nouveau projet</button>
-
+            {% else %}
+                <tr>
+                    <td colspan="8">Aucun projets trouvé</td>
+                </tr>
+            {% endfor %}
 {% endblock %}

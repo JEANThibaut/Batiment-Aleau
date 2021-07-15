@@ -25,6 +25,7 @@ class ProjectController extends AbstractController
     {   
         $user=$this->getUser();
         $projects = $projectRepository->findProjects($user);
+        dump($projects);
         return $this->render('project/index.html.twig', [
             'projects' => $projects,
         ]);
@@ -39,6 +40,7 @@ class ProjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $project->setUser($this->getUser());
+            $project->setDate(new \DateTime());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($project);
             $entityManager->flush();

@@ -1,11 +1,12 @@
 
 .accordion {
+  border-radius: 0.5em;
     background-color: #eee;
     color: #444;
     cursor: pointer;
     padding: 1em;
     width: 100%;
-    text-align: left;
+    text-align: center;
     border: none;
     outline: none;
     transition: 0.4s;
@@ -17,8 +18,12 @@
   
   
   .panel {
-    padding: 0 18px;
+    padding: 0 1em;
     background-color: white;
     display: none;
     overflow: hidden;
+  }
+  
+  .card{
+    border-radius: 0.5em;
   }
