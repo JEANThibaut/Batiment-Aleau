@@ -113,14 +113,14 @@ class Task
         return $this;
     }
 
-    public function getRelation(): ?Project
+    public function getProject(): ?Project
     {
-        return $this->relation;
+        return $this->project;
     }
 
-    public function setRelation(?Project $relation): self
+    public function setProject(?Project $project): self
     {
-        $this->relation = $relation;
+        $this->project = $project;
 
         return $this;
     }

@@ -56,7 +56,7 @@ class Project
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="relation")
+     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="project")
      */
     private $tasks;
 
@@ -142,14 +142,14 @@ class Project
         return $this;
     }
 
-    public function getRelation(): ?User
+    public function getUser(): ?User
     {
-        return $this->relation;
+        return $this->user;
     }
 
-    public function setRelation(?User $relation): self
+    public function setUser(?User $user): self
     {
-        $this->relation = $relation;
+        $this->user = $user;
 
         return $this;
     }
@@ -166,7 +166,7 @@ class Project
     {
         if (!$this->tasks->contains($task)) {
             $this->tasks[] = $task;
-            $task->setRelation($this);
+            $task->setProject($this);
         }
 
         return $this;
@@ -176,8 +176,8 @@ class Project
     {
         if ($this->tasks->removeElement($task)) {
             // set the owning side to null (unless already changed)
-            if ($task->getRelation() === $this) {
-                $task->setRelation(null);
+            if ($task->getProject() === $this) {
+                $task->setProject(null);
             }
         }
 
