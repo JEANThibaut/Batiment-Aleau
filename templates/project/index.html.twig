@@ -17,15 +17,18 @@
                     <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d H:i:s') : '' }}</p>
                     <a class="btn colorPrim my-1" href="{{ path('project_show', {'id': project.id}) }}">Détails</a>
                     <a class="btn colorPrim my-1" href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
-                    <button class="btn colorPrim btn-sm accordion my-1">Voir les tâches</button>
+                    <a class="btn colorPrim btn-sm accordion my-1">Voir les tâches</a>
                     <div class="panel card my-1">
+                        <a class="btn colorPrim my-2" href="{{ path('task_new') }}">Ajouter une tâche</a>
                         {% for task in project.tasks %}
                             <div class="container">
                                 <div class="row">
                                     <p class="w-25 m-auto">{{ task.title }}</p>
                                     <button class="w-25 m-auto">{{ task.state }} </button>
                                 </div>
-                            </div>    
+                            </div>
+                            {% else %}
+                                <p>Aucune tâche ajoutée</p>    
                         {% endfor %}
                     </div>
                 </div>
