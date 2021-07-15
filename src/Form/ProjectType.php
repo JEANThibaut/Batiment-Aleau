@@ -19,7 +19,8 @@ class ProjectType extends AbstractType
                 "label" => "Catégorie",
             ])
             ->add('deadline', null, [
-                "label" => "Date de fin"
+                "label" => "Date de fin",
+   
             ])
             // ->add('date')
             ->add('client')
