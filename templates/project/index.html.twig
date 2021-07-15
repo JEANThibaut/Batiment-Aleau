@@ -1,45 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project index{% endblock %}
+{% block title %}Mes projets{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Deadline</th>
-                <th>Date</th>
-                <th>Client</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
+    <h1>Mes projets</h1>
+
+
+    
+ 
         <tbody>
         {% for project in projects %}
-            <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.title }}</td>
-                <td>{{ project.category }}</td>
-                <td>{{ project.deadline ? project.deadline|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ project.date ? project.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ project.client }}</td>
-                <td>{{ project.description }}</td>
-                <td>
-                    <a href="{{ path('project_show', {'id': project.id}) }}">show</a>
-                    <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
-                </td>
-            </tr>
+
+        <button class="accordion my-1">{{ project.title }} {{ project.category }}</button>
+        <div class="panel">
+            <p>{{ project.description }}</p>
+            <p>{{ project.client }}</p>
+            <p>{{ project.description }}</p>
+            <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d H:i:s') : '' }}</p>
+            <a href="{{ path('project_show', {'id': project.id}) }}">Détails</a>
+            <a href="{{ path('project_edit', {'id': project.id}) }}">Modifier</a>
+        </div>
+
         {% else %}
             <tr>
                 <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+ 
 
-    <a href="{{ path('project_new') }}">Create new</a>
+    <button class="btn btn-primary my-3 w-25" href="{{ path('project_new') }}">Créer un nouveau projet</button>
+
 {% endblock %}

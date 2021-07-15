@@ -1,6 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% block title %}Bienvenue!{% endblock %}</title>
             
         <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}"/>
@@ -18,9 +19,15 @@
     </head>
     <body>
         {% include 'header.html.twig' %}
-        {% block body %}
-        
-        {% endblock %}
+        <main>
+            <section class="container my-5">
+                <div class="row">
+                    {% block body %}
+                    
+                    {% endblock %}
+                </div>
+            </section>
+        </main>
         {% include 'footer.html.twig' %}
             <script src="{{ asset('JS/main.js' ) }}"></script>
             <script src="https://kit.fontawesome.com/6e3dce75fc.js" crossorigin="anonymous"></script>
