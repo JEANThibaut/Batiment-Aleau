@@ -19,9 +19,14 @@
                                 <li><a class="dropdown-item" href="{{ asset('/project/new') }}">Créer un nouveau projet</a></li>
                             </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                            </li>    
+                            {% if not app.user %}
+                                <a class="nav-link" href="{{ path('user_new') }}">S'inscrire</a>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                                </li>    
+                            {% endif %}
+                    
                         </ul>
                     </div>
         </div>

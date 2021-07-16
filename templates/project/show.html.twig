@@ -3,50 +3,44 @@
 {% block title %}Projet{% endblock %}
 
 {% block body %}
-<section class="text-center">
-    <div class="card">
-        <div class="card-header">
-            <h1>{{ project.title }}</h1>
+    <section class="text-center">
+        <div class="card">
+            <div class="card-header">
+                <h1>{{ project.title }}</h1>
+            </div>
+            <p>{{ project.category }}</p>
+            <p>Date de création: {{ project.date ? project.date|date('Y-m-d') : '' }} </p> 
+            <p>Date de fin prévue: {{ project.deadline ? project.deadline|date('Y-m-d ') : '' }}</p>
+            <p>Client: {{ project.client }}</p>
+            <p>Description: {{ project.description }}</p>
         </div>
-        <p>{{ project.category }}</p>
-        <p>Date de création: {{ project.date ? project.date|date('Y-m-d') : '' }} </p> 
-        <p>Date de fin prévue: {{ project.deadline ? project.deadline|date('Y-m-d ') : '' }}</p>
-        <p>Client: {{ project.client }}</p>
-        <p>Description: {{ project.description }}</p>
-    </div>
-    <div class="row my-3 text-center">
-        <a class="btn colorPrim w-25 m-auto" href="{{ path('project_edit', {'id': project.id}) }}">Modifier le projet</a>
-        <a class="btn colorPrim w-25 m-auto" href="{{ path('project_index') }}">Retour à l'accueil</a>
-    </div>
-    {{ include('project/_delete_form.html.twig') }}
-    
-    <h3>Tâches</h3>
-        <table class="border" width="100%" align="center">
-            <thead>
-                <tr>
-                    <th>Tâche</th>
-                    <th>Description</th>
-                    <th>Etat</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for task in project.tasks %}
+        <div class="row my-3 text-center">
+            <a class="btn colorPrim w-25 m-auto" href="{{ path('project_edit', {'id': project.id}) }}">Modifier le projet</a>
+            <a class="btn colorPrim w-25 m-auto" href="{{ path('project_index') }}">Retour à l'accueil</a>
+        </div>
+        {{ include('project/_delete_form.html.twig') }}
+        <h3>Tâches</h3>
+            <table class="border" width="100%" align="center">
+                <thead>
                     <tr>
-                        <td>{{ task.title }}</td>
-                        <td>{{ task.description }}</td>
-                        <td>{{ task.state}}</td>
-                        <td><a class="btn colorPrim w-25" href="{{ path('task_edit', {'id': project.id}) }}">Modifier la tâche</a></td>
-                        <td><button class="btn colorPrim">Terminée?</button></td>
+                        <th>Tâche</th>
+                        <th>Description</th>
+                        <th>Etat</th>
                     </tr>
-                    
-                    {% else %}
-                    <p>Pas de tâches ajoutées</p>
-                {% endfor %}
-            </tbody>
-        </table>
-</section>
-
-   
-
-   
+                </thead>
+                <tbody>
+                    {% for task in project.tasks %}
+                        <tr>
+                            <td>{{ task.title }}</td>
+                            <td>{{ task.description }}</td>
+                            <td>{{ task.state}}</td>
+                            <td><a class="btn colorPrim w-50" href="{{ path('task_edit', {'id': project.id}) }}">Modifier la tâche</a></td>
+                            <td><button class="btn colorPrim">Terminée?</button></td>
+                        </tr>
+                        {% else %}
+                        <p>Pas de tâches ajoutées</p>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </section>
 {% endblock %}

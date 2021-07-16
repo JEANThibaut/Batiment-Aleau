@@ -25,7 +25,6 @@ class ProjectController extends AbstractController
     {   
         $user=$this->getUser();
         $projects = $projectRepository->findProjects($user);
-        dump($projects);
         return $this->render('project/index.html.twig', [
             'projects' => $projects,
         ]);
