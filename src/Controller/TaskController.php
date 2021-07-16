@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-
+use App\Repository\ProjectRepository;
 
 /**
  * @IsGranted("IS_AUTHENTICATED_FULLY")
@@ -27,14 +27,16 @@ class TaskController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'task_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    #[Route('/new/{id}', name: 'task_new', methods: ['GET', 'POST'], requirements:['id' => '\d+'])]
+    public function new(Request $request, ProjectRepository $projectRepository, int $id=1): Response
     {
+        $project=$projectRepository->find($id);
         $task = new Task();
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
-
+       
         if ($form->isSubmitted() && $form->isValid()) {
+            $task->setProject($project);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
