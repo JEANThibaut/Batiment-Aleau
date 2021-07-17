@@ -87,4 +87,22 @@ class TaskController extends AbstractController
 
         return $this->redirectToRoute('task_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    #[Route('/state/{id}', name: 'task_state', methods: ['POST'])]
+    public function state(Request $request, Task $task): Response
+    {
+        if ($this->isCsrfTokenValid('state'.$task->getId(), $request->request->get('_token'))) {
+            $task->setState(true);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($task);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+
 }
+

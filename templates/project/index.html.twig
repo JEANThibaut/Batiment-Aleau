@@ -24,7 +24,15 @@
                             <div class="container">
                                 <div class="row">
                                     <p class="w-25 m-auto my-2">{{ task.title }}</p>
-                                    <button class="btn colorPrim w-25 m-auto">{{ task.state }} </button>
+                                    {% if task.state == true %}
+                                        <p>Terminée</p>
+                                    {% else %}
+                                    <p class="colorTer">En cours</p>
+                                    <form method="post" action="{{ path('task_state', { id:task.id }) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('state' ~ task.id) }}">
+                                        <button type="submit" class="btn colorPrim w-25 m-auto">Finir</button>
+                                    </form>
+                                    {% endif %}
                                 </div>
                             </div>
                             {% else %}
