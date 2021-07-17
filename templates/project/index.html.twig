@@ -17,11 +17,15 @@
         <div class="row">
         {% for project in projects %}
         <div class="col-lg-4 col-md-6">
-            <button class="accordion colorPrim my-1 m-auto ">{{ project.title }} / {{ project.category }}</button>
+            <button class="accordion colorPrim my-1 m-auto ">{{ project.title }}</br>
+                    <div class="colorSec card">
+                        Reste: {{project.date.diff(project.deadline)|date("%M")}} mois et {{project.date.diff(project.deadline)|date("%D")}} jours
+                    </div>
+            </button>
                 <div class="panel card m-auto text-center">
                     <p>{{ project.client }}</p>
                     <p>{{ project.description }}</p>
-                    <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d') : '' }}</p>
+                    <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('d-m-Y') : '' }}</p>
                     <a class="btn colorPrim my-1" href="{{ path('project_show', { id: project.id}) }}">Détails</a>
                     <a class="btn colorPrim my-1" href="{{ path('project_edit', { id: project.id}) }}">Modifier</a>
                     <a class="btn colorPrim btn-sm accordion my-1">Voir les tâches</a>

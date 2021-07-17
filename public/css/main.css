@@ -6,11 +6,14 @@ header{
 }
 main{
   min-height: 70%;
+  
 }
 footer{
   min-height: 15%;
+  margin-bottom: 0;
 }
 
+/* Colors */
 .colorPrim {
   background-color: #9BC1BC ;
 }
@@ -21,6 +24,23 @@ footer{
   background-color: #ED6A5A;
 }
 
+.logo{
+  height:20vh;
+}
+/* =========================== */
+
+.card{
+  border-radius: 0.5em;
+}
+
+.form-control{
+  border-color: #9BC1BC;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9BC1BC;
+}
+
+
+
+/* For JS accordion animation */
 .accordion {
     border-radius: 0.5em;
     color: #444;
@@ -41,15 +61,5 @@ footer{
     display: none;
     overflow: hidden;
   }
-  .card{
-    border-radius: 0.5em;
-  }
 
-  .form-control{
-    border-color: #9BC1BC;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9BC1BC;
-  }
 
-  footer{
-    margin-bottom: 0;
-  }
