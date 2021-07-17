@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -23,8 +24,11 @@ class RegistrationFormType extends AbstractType
             ->add('lastname',null,[
                 "label"=>"Nom"
             ])
-            ->add('birthdate',null,[
-                "label"=>"Date de naissance"
+            ->add('birthdate', DateType::class,[
+                'label'=>"Date de naissance",
+                'placeholder' => [
+                    'day' => 'Jour', 'month' => 'Mois', 'year' => 'Année', 
+                ]
             ])
             ->add('email')
 

@@ -3,9 +3,11 @@
 {% block title %}Nouvelle tâche{% endblock %}
 
 {% block body %}
-    <h1>Créer une tâche</h1>
-
-    {{ include('task/_form.html.twig') }}
-
-    <a href="{{ path('project_index') }}">Retour à la liste</a>
+    <section>
+        <div class="text-center">
+            <h1>Créer une tâche</h1>
+            {{ include('task/_form.html.twig') }}
+            <a class="btn colorSec" href="{{ path('project_index') }}">Retour à l'acceuil</a>
+        </div>
+    </section>
 {% endblock %}

@@ -6,6 +6,7 @@ use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class TaskType extends AbstractType
 {
@@ -14,7 +15,11 @@ class TaskType extends AbstractType
         $builder
             ->add('title')
             // ->add('date')
-            ->add('deadline')
+            ->add('deadline', DateType::class,[
+                'placeholder' => [
+                    'day' => 'Jour', 'month' => 'Mois', 'year' => 'Année', 
+                ]
+            ])
             ->add('description')
             // ->add('state')
             // ->add('project')

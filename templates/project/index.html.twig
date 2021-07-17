@@ -3,7 +3,7 @@
 {% block title %}Mes projets{% endblock %}
 
 {% block body %}
-        <a class="btn btn-sm colorSec w-25 my-3 mx-3" href="{{ path('project_new') }}">Créer un nouveau projet</a>
+        <a class="btn btn-sm colorSec my-3 mx-3 col-sm-6 col-md-6 col-lg-3 " href="{{ path('project_new') }}">Créer un nouveau projet</a>
     <h1>Mes projets</h1>
         
         
@@ -34,16 +34,17 @@
                         {% for task in project.tasks %}
                             <div class="container">
                                 <div class="row">
-                                    <p class="w-25 m-auto my-2">{{ task.title }}</p>
+                                    <p class=" m-auto my-2">{{ task.title }}</p>
                                     {% if task.state == true %}
-                                        <p class="bg-success">Terminée</p>
+                                        <p class="card bg-success col-8 m-auto my-1">Terminée</p>
                                     {% else %}
-                                    <p class="colorTer">En cours</p>
+                                    <p class="card colorTer col-8 m-auto">En cours</p>
                                     <form method="post" action="{{ path('task_state', { id:task.id }) }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token('state' ~ task.id) }}">
-                                        <button type="submit" class="btn colorPrim w-25 m-auto">Finir</button>
+                                        <button type="submit" class="btn colorPrim m-auto my-1">Finir</button>
                                     </form>
                                     {% endif %}
+                                    <hr>
                                 </div>
                             </div>
                             {% else %}

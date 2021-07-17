@@ -6,6 +6,7 @@ use App\Entity\Project;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ProjectType extends AbstractType
 {
@@ -18,9 +19,10 @@ class ProjectType extends AbstractType
             ->add('category', null,  [
                 "label" => "Catégorie",
             ])
-            ->add('deadline', null, [
-                "label" => "Date de fin",
-   
+            ->add('deadline', DateType::class,[
+                'placeholder' => [
+                    'day' => 'Jour', 'month' => 'Mois', 'year' => 'Année', 
+                ]
             ])
             // ->add('date')
             ->add('client')

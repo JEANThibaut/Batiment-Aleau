@@ -5,12 +5,9 @@
 {% block body %}
     <section class="text-center">
         <h1>Modifier le projet</h1>
-        <div class="col-12 col-md-8 col-lg-6 col-xxl-6 m-auto">
             {{ include('project/_form.html.twig', {'button_label': 'Modifier'}) }}
-        </div>
-        
         <div>
-            <a class="btn w-25 my-3 colorPrim"href="{{ path('project_index') }}">Retour à l'accueil</a>
+            <a class="btn  my-3 colorPrim"href="{{ path('project_index') }}">Retour à l'accueil</a>
         </div>
         {{ include('project/_delete_form.html.twig') }}
     </section>
