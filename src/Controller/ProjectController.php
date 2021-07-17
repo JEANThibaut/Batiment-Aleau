@@ -92,6 +92,11 @@ class ProjectController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);
             $entityManager->flush();
+
+            $this->addFlash(
+                "delete", 
+                "Le projet à bien été supprimé"
+            );
         }
 
         return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);

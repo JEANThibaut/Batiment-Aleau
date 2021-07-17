@@ -13,10 +13,10 @@ class TaskType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('date')
+            // ->add('date')
             ->add('deadline')
             ->add('description')
-            ->add('state')
+            // ->add('state')
             // ->add('project')
         ;
     }

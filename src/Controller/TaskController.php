@@ -37,11 +37,15 @@ class TaskController extends AbstractController
        
         if ($form->isSubmitted() && $form->isValid()) {
             $task->setProject($project);
+            $task->setDate(new \DateTime());
+            $task->setState( false );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
 
-            return $this->redirectToRoute('task_index', [], Response::HTTP_SEE_OTHER);
+     
+
+            return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('task/new.html.twig', [
@@ -97,6 +101,11 @@ class TaskController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
+
+            $this->addFlash(
+                "success", 
+                "La tâche est terminée"
+            );
         }
 
         return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);

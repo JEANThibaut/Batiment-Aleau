@@ -5,7 +5,19 @@
 {% block body %}
 
     <h1>Mes projets</h1>
-        <!-- <button class="btn btn-sm colorSec  w-25 my-3 mx-5" href="{{ path('project_new') }}">Créer un nouveau projet</button> -->
+        <button class="btn btn-sm colorSec w-25 my-3 mx-3" href="{{ path('project_new') }}">Créer un nouveau projet</button>
+        
+        {% for message in app.flashes('success') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        {% for message in app.flashes('delete') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
 
         <div class="row">
         {% for project in projects %}
@@ -25,7 +37,7 @@
                                 <div class="row">
                                     <p class="w-25 m-auto my-2">{{ task.title }}</p>
                                     {% if task.state == true %}
-                                        <p>Terminée</p>
+                                        <p class="bg-success">Terminée</p>
                                     {% else %}
                                     <p class="colorTer">En cours</p>
                                     <form method="post" action="{{ path('task_state', { id:task.id }) }}">
