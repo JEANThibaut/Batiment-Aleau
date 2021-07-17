@@ -44,6 +44,11 @@ class ProjectController extends AbstractController
             $entityManager->persist($project);
             $entityManager->flush();
 
+            $this->addFlash(
+                "success", 
+                "Le projet a bien été créé"
+            );
+
             return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -94,8 +99,8 @@ class ProjectController extends AbstractController
             $entityManager->flush();
 
             $this->addFlash(
-                "delete", 
-                "Le projet à bien été supprimé"
+                "success", 
+                "Le projet a bien été supprimé"
             );
         }
 

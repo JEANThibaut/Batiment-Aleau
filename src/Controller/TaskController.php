@@ -43,7 +43,10 @@ class TaskController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-     
+            $this->addFlash(
+                "success", 
+                "La tâche a bien été créée"
+            );
 
             return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
         }

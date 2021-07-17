@@ -34,7 +34,7 @@
                             <td>{{ task.title }}</td>
                             <td>{{ task.description }}</td>
                             <td>{{ task.state}}</td>
-                            <td><a class="btn colorPrim w-50" href="{{ path('task_edit', {'id': project.id}) }}">Modifier la tâche</a></td>
+                            <td><a class="btn colorPrim w-50" href="{{ path('task_edit', {'id': task.id}) }}">Modifier la tâche</a></td>
                             <td><button class="btn colorPrim">Terminée?</button></td>
                         </tr>
                         {% else %}

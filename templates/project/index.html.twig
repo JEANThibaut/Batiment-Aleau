@@ -3,9 +3,9 @@
 {% block title %}Mes projets{% endblock %}
 
 {% block body %}
-
+        <a class="btn btn-sm colorSec w-25 my-3 mx-3" href="{{ path('project_new') }}">Créer un nouveau projet</a>
     <h1>Mes projets</h1>
-        <button class="btn btn-sm colorSec w-25 my-3 mx-3" href="{{ path('project_new') }}">Créer un nouveau projet</button>
+        
         
         {% for message in app.flashes('success') %}
             <div class="flash-notice">
@@ -13,11 +13,6 @@
             </div>
         {% endfor %}
 
-        {% for message in app.flashes('delete') %}
-            <div class="flash-notice">
-                {{ message }}
-            </div>
-        {% endfor %}
 
         <div class="row">
         {% for project in projects %}
@@ -26,7 +21,7 @@
                 <div class="panel card m-auto text-center">
                     <p>{{ project.client }}</p>
                     <p>{{ project.description }}</p>
-                    <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d H:i:s') : '' }}</p>
+                    <p>Date de fin de projet:  {{ project.deadline ? project.deadline|date('Y-m-d') : '' }}</p>
                     <a class="btn colorPrim my-1" href="{{ path('project_show', { id: project.id}) }}">Détails</a>
                     <a class="btn colorPrim my-1" href="{{ path('project_edit', { id: project.id}) }}">Modifier</a>
                     <a class="btn colorPrim btn-sm accordion my-1">Voir les tâches</a>
