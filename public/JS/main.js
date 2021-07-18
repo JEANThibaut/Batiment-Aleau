@@ -16,9 +16,9 @@ for (i = 0; i < acc.length; i++) {
 
 function date(){
   let date= new Date();
-  let da = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
+  let da = new Intl.DateTimeFormat('fr', { day: '2-digit' }).format(date);
   let mo = new Intl.DateTimeFormat('fr', { month: 'short' }).format(date);
-  let ye = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+  let ye = new Intl.DateTimeFormat('fr', { year: 'numeric' }).format(date);
   let newDate="Nous sommes le "+da+" "+mo+" "+ye+" ";  
   document.getElementById('date').innerHTML=newDate;
 }

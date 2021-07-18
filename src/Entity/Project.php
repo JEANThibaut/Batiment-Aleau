@@ -6,6 +6,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ProjectRepository::class)
@@ -22,16 +23,19 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\NotBlank]
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\NotBlank]
     private $category;
 
     /**
      * @ORM\Column(type="datetime")
      */
+    #[Assert\NotBlank]
     private $deadline;
 
     /**
@@ -42,11 +46,13 @@ class Project
     /**
      * @ORM\Column(type="string", length=255)
      */
+    #[Assert\NotBlank]
     private $client;
 
     /**
      * @ORM\Column(type="text")
      */
+    #[Assert\NotBlank]
     private $description;
 
     /**
