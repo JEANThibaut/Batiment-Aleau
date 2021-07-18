@@ -24,7 +24,6 @@ class ProjectType extends AbstractType
                     'day' => 'Jour', 'month' => 'Mois', 'year' => 'Année', 
                 ]
             ])
-            // ->add('date')
             ->add('client')
             ->add('description')
         ;
