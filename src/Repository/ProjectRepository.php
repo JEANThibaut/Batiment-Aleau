@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Project;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,4 +48,18 @@ class ProjectRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findProjects(User $user){
+
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.user', 'u')
+            ->addSelect('u')
+            ->andWhere('p.user= :val')
+            ->orderBy('p.deadline', 'ASC')
+            ->setParameter('val',$user)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }

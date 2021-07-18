@@ -1,0 +1,69 @@
+
+
+body{
+  min-height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+header{
+  min-height: 15%;
+}
+main{
+  min-height: 70%;
+  
+}
+footer{
+  min-height: 15%;
+  margin-bottom: 0;
+}
+
+/* Colors */
+.colorPrim {
+  background-color: #9BC1BC ;
+}
+.colorSec{
+  background-color: #E6EBE0;
+}
+.colorTer{
+  background-color: #ED6A5A;
+}
+
+.logo{
+  height:20vh;
+}
+/* =========================== */
+
+.card{
+  border-radius: 0.5em;
+  border-color: #9BC1BC;
+}
+
+.form-control{
+  border-color: #9BC1BC;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #9BC1BC;
+}
+
+
+
+/* For JS accordion animation */
+.accordion {
+    border-radius: 0.5em;
+    color: #444;
+    cursor: pointer;
+    padding: 1em;
+    text-align: center;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    width:100%
+  }
+  .active, .accordion:hover {
+    background-color: #E6EBE0;
+  }
+  .panel {
+    padding: 0 1em;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+  }
+
+
