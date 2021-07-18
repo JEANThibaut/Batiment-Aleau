@@ -1,5 +1,8 @@
+
+
 body{
   min-height: 100%;
+  font-family: 'Roboto', sans-serif;
 }
 header{
   min-height: 15%;
@@ -31,6 +34,7 @@ footer{
 
 .card{
   border-radius: 0.5em;
+  border-color: #9BC1BC;
 }
 
 .form-control{

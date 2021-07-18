@@ -31,7 +31,7 @@ class AppFixtures extends Fixture
         $user->setBirthdate(new \DateTime());
         $user->setRoles([]);
 
-        for($j=1; $j < mt_rand(1, 6); $j++){
+        for($j=1; $j < mt_rand(3, 10); $j++){
             $project = new Project();
             $int= mt_rand(1626546566,1689618566);
             $date = date("Y-m-d H:i:s",$int);
@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
 
             $manager->persist($project);
 
-            for($k=1; $k < mt_rand(1, 10); $k++){
+            for($k=1; $k < mt_rand(10, 20); $k++){
                 $task = new Task();
                 $task->setTitle("titre" .$k);
                 $task->setDate(new \DateTime());
