@@ -66,4 +66,6 @@ footer{
     overflow: hidden;
   }
 
-
+  .alert-success{
+    border-radius: 0.5em;
+  }
