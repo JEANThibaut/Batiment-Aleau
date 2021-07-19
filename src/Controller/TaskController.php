@@ -111,7 +111,7 @@ class TaskController extends AbstractController
             );
         }
 
-        return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('project_show',["id"=>$task->getProject()->getId()]);
     }
 
 

@@ -4,6 +4,12 @@
 
 {% block body %}
     <section class="text-center">
+
+        {% for message in app.flashes('success') %}
+            <div class="flash-notice alert-success py-5 col-6 my-3">
+                {{ message }}
+            </div>
+        {% endfor %}
         <div class="card">
             <div class="card-header">
                 <h1>{{ project.title }}</h1>

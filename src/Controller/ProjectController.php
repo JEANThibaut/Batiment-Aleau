@@ -80,6 +80,10 @@ class ProjectController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash(
+                "success", 
+                "Le projet a bien été modifié"
+            );
 
             return $this->redirectToRoute('project_index', [], Response::HTTP_SEE_OTHER);
         }
